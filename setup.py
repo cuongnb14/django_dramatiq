@@ -32,6 +32,7 @@ setup(
     install_requires=[
         "django>=3.2",
         "dramatiq>=1.11",
+        "apscheduler>=3.10.4",
     ],
     classifiers=[
         "Environment :: Web Environment",

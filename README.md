@@ -350,3 +350,26 @@ django_dramatiq is licensed under Apache 2.0. Please see
 [stubbroker]: https://dramatiq.io/reference.html#dramatiq.brokers.stub.StubBroker
 [django-configurations]: https://github.com/jazzband/django-configurations/
 [transactiontestcase]: https://docs.djangoproject.com/en/dev/topics/testing/tools/#django.test.TransactionTestCase
+
+
+# Update from my version
+
+## Feature
+- Add more task info in admin
+- Add command dramatiq_stats
+- Add scheduler
+
+## Settings
+
+```python
+# retry scheduler job when have db error (because run_sheduler is long running task)
+JOBS_RETRY_WHEN_DB_ERROR = {
+    'job_id': 10 # retry after 10 mins
+}
+
+# ignore tasks log to db
+DRAMATIQ_ADMIN_IGNORE_TASKS = []
+
+# ignore tasks in queue log to db
+DRAMATIQ_ADMIN_IGNORE_QUEUES = []
+```
