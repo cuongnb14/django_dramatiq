@@ -6,7 +6,7 @@ from dramatiq.results import Results
 
 from .utils import load_middleware
 
-DEFAULT_ENCODER = "dramatiq.encoder.JSONEncoder"
+DEFAULT_ENCODER = "django_dramatiq.encoders.JSONEncoder"
 
 DEFAULT_BROKER = "dramatiq.brokers.rabbitmq.RabbitmqBroker"
 DEFAULT_BROKER_SETTINGS = {
