@@ -32,6 +32,7 @@ def schedule_job(id, trigger=None, cron=None, **schedule_args):
         
         job_registry[id] = {
             'func': func,
+            'trigger': trigger,
             'cron': cron,
             'schedule_args': schedule_args
         }
