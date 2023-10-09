@@ -373,3 +373,29 @@ DRAMATIQ_ADMIN_IGNORE_TASKS = []
 # ignore tasks in queue log to db
 DRAMATIQ_ADMIN_IGNORE_QUEUES = []
 ```
+## Usage
+
+### scheduler job
+
+task.py
+
+```python
+from django_dramatiq.scheduler import schedule_job
+
+@schedule_job(id='create_report', cron='0 */8 * * *')
+def create_report():
+   # do something 
+```
+
+**Run scheduler**
+```sh
+python3 manage.py run_scheduler
+```
+
+**Task stats**
+```sh
+python3 manage.py dramatiq_stats
+```
+
+
+
