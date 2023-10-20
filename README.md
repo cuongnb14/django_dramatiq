@@ -377,12 +377,12 @@ DRAMATIQ_ADMIN_IGNORE_QUEUES = []
 
 ### scheduler job
 
-task.py
+scheduled_tasks.py
 
 ```python
-from django_dramatiq.scheduler import schedule_job
+from django_dramatiq.scheduler import scheduled_task
 
-@schedule_job(id='create_report', cron='0 */8 * * *')
+@scheduled_task(id='create_report', cron='0 */8 * * *')
 def create_report():
    # do something 
 ```

@@ -9,7 +9,7 @@ from django.conf import settings
 logger = logging.getLogger(__name__)
 
 scheduler = BlockingScheduler(timezone=pytz.UTC)
-job_registry = {}
+scheduled_task_registry = {}
 
 JOBS_RETRY_WHEN_DB_ERROR = {}
 if hasattr(settings, 'JOBS_RETRY_WHEN_DB_ERROR'):
@@ -25,12 +25,12 @@ def db_error_listener(event):
             scheduler.modify_job(event.job_id, next_run_time=datetime.now(tz=pytz.UTC) + timedelta(minutes=JOBS_RETRY_WHEN_DB_ERROR[event.job_id]))
 
 
-def schedule_job(id, trigger=None, cron=None, **schedule_args):
+def scheduled_task(id, trigger=None, cron=None, **schedule_args):
     def decorator(func):
-        if id in job_registry:
-            raise Exception(f'Schedule job with id {id} already register')
+        if id in scheduled_task_registry:
+            raise Exception(f'Scheduled task with id {id} already register')
         
-        job_registry[id] = {
+        scheduled_task_registry[id] = {
             'func': func,
             'trigger': trigger,
             'cron': cron,
