@@ -1,5 +1,5 @@
 import json
-from datetime import datetime
+from datetime import datetime, timezone as dt_timezone
 
 from django.conf import settings
 from django.contrib import admin
@@ -67,7 +67,7 @@ class TaskAdmin(admin.ModelAdmin):
         )
 
         # Django expects a timezone-aware datetime if USE_TZ is True, and a naive datetime in localtime otherwise.
-        tz = timezone.utc if settings.USE_TZ else None
+        tz = dt_timezone.utc if settings.USE_TZ else None
         return datetime.fromtimestamp(timestamp, tz=tz)
 
     def message_details(self, instance):
