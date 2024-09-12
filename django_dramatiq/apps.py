@@ -33,7 +33,7 @@ RATE_LIMITER_BACKEND = None
 
 class DjangoDramatiqConfig(AppConfig):
     name = "django_dramatiq"
-    verbose_name = "Django Dramatiq"
+    verbose_name = "Dramatiq"
 
     def __init__(self, app_name, app_module):
         super().__init__(app_name, app_module)
